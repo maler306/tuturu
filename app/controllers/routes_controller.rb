@@ -1,10 +1,13 @@
 class RoutesController < ApplicationController
   before_action :set_route, only: [:show, :edit, :update, :destroy]
+
   def index
     @routes = Route.all
   end
 
   def show
+    @trains = @route.trains
+    @railway_stations = @route.railway_stations
   end
 
   def new
@@ -18,7 +21,7 @@ class RoutesController < ApplicationController
     @route = Route.new(route_params)
 
     if @route.save
-      redirect_to @route
+      redirect_to @route, notice: 'Маршрут был успешно создан.'
     else
       render :new
     end
@@ -26,7 +29,7 @@ class RoutesController < ApplicationController
 
   def update
     if @route.update(route_params)
-      redirect_to @route
+      redirect_to @route, notice: 'Маршрут был успешно обновлен'
     else
       render :edit
     end
@@ -34,7 +37,7 @@ class RoutesController < ApplicationController
 
   def destroy
     @route.destroy
-    redirect_to routes_path
+    redirect_to routes_path, notice: 'Маршрут удален'
   end
 
   private

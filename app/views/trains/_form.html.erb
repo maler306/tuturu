@@ -1,22 +1,23 @@
 <%= form_with(model: train, local: true) do |form| %>
-  <% if train.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(train.errors.count, "error") %> prohibited this train from being saved:</h2>
+  <%= render 'common/errors', resource: train %>
 
-      <ul>
-      <% train.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
-    <%= form.label :number %>
+    <%= form.label :number, "Номер поезда" %>
     <%= form.text_field :number, id: :train_number %>
   </div>
 
+  <div class="field">
+    <%= form.label :current_station, "Выберите маршрут." %>
+    <%= form.collection_select :route_id, Route.all, :id, :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :route, "Выберите станцию." %>
+    <%= form.collection_select :current_station_id, RailwayStation.all, :id, :title %>
+  </div>
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "#{train.new_record? ? 'Создать' : 'Редактировать'} "%>
   </div>
 <% end %>

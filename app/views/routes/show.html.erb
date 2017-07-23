@@ -5,5 +5,23 @@
   <%= @route.title %>
 </p>
 
+<p>
+  <% if @trains.size==0 %>
+    <strong>Поездов на маршруте нет</strong>
+  <% else %>
+    <strong>Поезда на маршруте:</strong>
+    <%= render 'trains/trains'  %>
+  <% end %>
+</p>
+
+<p>
+  <% if @railway_stations.size==0 %>
+    <strong>станций в маршруте нет</strong>
+  <% else %>
+    <strong>Список станций маршрута:</strong>
+    <%= render @railway_stations  %>
+  <% end %>
+</p>
+
 <%= link_to 'Редактировать', edit_route_path(@route) %> |
 <%= link_to 'Назад', routes_path %>
