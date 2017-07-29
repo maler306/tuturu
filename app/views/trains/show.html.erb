@@ -11,41 +11,23 @@
 </p>
 
 
-  <strong>Список вагонов:</strong>
+  <strong>Информация о местах:</strong>
   <ul>
-    <% if @train.carriages.empty? %>
+    <% if @carriages.empty? %>
       <p> У поезда нет вагонов! </p>
     <% else %>
-      <% @train.carriages.each do |carriage| %>
-          <li><%= link_to "Вагон №#{carriage.number} - #{Carriage.types[carriage.carriage_type.to_sym]}", train_carriage_path(@train, carriage) %></li>
-      <% end %>
+
+      <strong>Количество купейных вагонов: <%=  @coupes.count  %></strong>
+          <li>Количество верхних купейных мест: <%= @coupes.sum { |car| car.top_seats } %></li>
+          <li>Количество нижних купейных мест: <%= @coupes.sum { |car| car.bottom_seats } %></li>
+
+      <strong>Количество плацкартных вагонов: <%=  @economys.count  %></strong>
+          <li>Количество верхних плацкартных мест: <%= @economys.sum { |car| car.top_seats } %></li>
+          <li>Количество нижних плацкартных мест: <%= @economys.sum { |car| car.bottom_seats } %></li>
+
     <% end %>
   </ul>
 </p>
 
-<%= link_to 'Добавить вагон', new_train_carriage_path(@train) %>
-
-<p>
-  <%= link_to 'Редактировать', edit_train_path(@train) %> |
-  <%= link_to 'Назад', trains_path %>
-</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Номер вагона</th>
-      <th>Тип вагона</th>
-      <th>Количество нижних мест</th>
-      <th>Количество верхних мест</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @train.carriages.each do |carriage| %>
-      <%  @carriage=carriage %>
-      <%= render 'carriages/carriage' %>
-    <% end %>
-
-  </tbody>
-</table>
+<%= link_to 'Список вагонов', train_carriages_path(@train) %><br>
+<%= link_to 'Список поездов', trains_path %>

@@ -1,6 +1,6 @@
       <tr>
         <td><%= @carriage.number %></td>
-        <td><%= Carriage.types[@carriage.carriage_type.to_sym] %></td>
+        <td><%= Carriage::TYPE[@carriage.carriage_type.to_sym] %></td>
         <td><%= @carriage.bottom_seats %></td>
         <td><%= @carriage.top_seats %></td>
         <td><%= link_to 'Показать', train_carriage_path(@train, @carriage) %></td>
