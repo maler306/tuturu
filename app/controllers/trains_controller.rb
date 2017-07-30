@@ -6,6 +6,9 @@ class TrainsController < ApplicationController
   end
 
   def show
+    @carriages = @train.carriages
+    @coupes=@carriages.select { |car| car.carriage_type==Carriage::TYPE.keys[1].to_s }
+    @economys=@train.carriages.select { |car| car.carriage_type==Carriage::TYPE.keys[0].to_s }
   end
 
   def new

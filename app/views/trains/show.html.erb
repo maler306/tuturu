@@ -10,5 +10,24 @@
   <%= @train.route.nil? ? "Маршрут не назначен" : @train.route.title %>
 </p>
 
-<%= link_to 'Edit', edit_train_path(@train) %> |
-<%= link_to 'Back', trains_path %>
+
+  <strong>Информация о местах:</strong>
+  <ul>
+    <% if @carriages.empty? %>
+      <p> У поезда нет вагонов! </p>
+    <% else %>
+
+      <strong>Количество купейных вагонов: <%=  @coupes.count  %></strong>
+          <li>Количество верхних купейных мест: <%= @coupes.sum { |car| car.top_seats } %></li>
+          <li>Количество нижних купейных мест: <%= @coupes.sum { |car| car.bottom_seats } %></li>
+
+      <strong>Количество плацкартных вагонов: <%=  @economys.count  %></strong>
+          <li>Количество верхних плацкартных мест: <%= @economys.sum { |car| car.top_seats } %></li>
+          <li>Количество нижних плацкартных мест: <%= @economys.sum { |car| car.bottom_seats } %></li>
+
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Список вагонов', train_carriages_path(@train) %><br>
+<%= link_to 'Список поездов', trains_path %>

@@ -1,0 +1,27 @@
+<%= form_with(model: [@train, @carriage] , local: true) do |form| %>
+
+  <div class="field">
+    <%= form.label :number %><br>
+    <%= form.number_field :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :carriage_type %><br>
+    <%= form.select :carriage_type, Carriage::TYPE.invert.to_a  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :top_seats %><br>
+    <%= form.number_field :top_seats %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bottom_seats %><br>
+    <%= form.number_field :bottom_seats %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit "#{@carriage.new_record? ? 'Создать' : 'Редактировать'} "%>
+  </div>
+<% end %>
