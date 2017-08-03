@@ -8,6 +8,7 @@ class RoutesController < ApplicationController
   def show
     @trains = @route.trains
     @railway_stations = @route.railway_stations
+    #@railway_stations_route = RailwayStationsRoute.where(params[:route_id])
   end
 
   def new
