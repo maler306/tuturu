@@ -10,28 +10,17 @@
   <%= @train.route.nil? ? "Маршрут не назначен" : @train.route.title %>
 </p>
 
-
-  <strong>Информация о местах:</strong>
   <ul>
     <% if @carriages.empty? %>
       <p> У поезда нет вагонов! </p>
     <% else %>
-
-      <strong>Количество вагонов СВ: <%=  @premium.count  %></strong>
-          <li>Количество нижних мест: <%= @premium.sum(:bottom_seats) %></li>
-
-      <strong>Количество купейных вагонов: <%=  @coupes.count  %></strong>
-          <li>Количество нижних купейных мест: <%= @coupes.sum(:bottom_seats) %></li>
-          <li>Количество верхних купейных мест: <%= @coupes.sum(:top_seats) %></li>
-
-      <strong>Количество плацкартных вагонов: <%=  @economys.count  %></strong>
-          <li>Количество нижних плацкартных мест: <%= @economys.sum(:bottom_seats) %></li>
-          <li>Количество верхних плацкартных мест: <%= @economys.sum(:top_seats) %></li>
-          <li>Количество нижних боковых плацкартных мест: <%= @economys.sum(:side_bottom_seats) %></li>
-          <li>Количество верхних боковых плацкартных мест: <%= @economys.sum(:side_top_seats) %></li>
-
-      <strong>Количество сидячих вагонов: <%=  @sedentary.count  %></strong>
-          <li>Количество сидячих мест: <%= @sedentary.sum(:seats) %></li>
+      <strong>Количество вагонов: </strong>
+      <!-- <strong> -->
+      <li><%= Carriage::TYPE[:PremiumCarriage] %>: <%=  @premium.count  %></li>
+      <li><%= Carriage::TYPE[:CoupeCarriage] %>: <%=  @coupes.count  %></li>
+      <li><%= Carriage::TYPE[:EconomyCarriage] %>: <%=  @economys.count  %></li>
+      <li><%= Carriage::TYPE[:SeatCarriage] %>: <%=  @sedentary.count  %></li>
+      <!-- </strong> -->
 
     <% end %>
   </ul>
