@@ -17,17 +17,50 @@
       <p> У поезда нет вагонов! </p>
     <% else %>
 
+      <strong>Количество вагонов СВ: <%=  @premium.count  %></strong>
+          <li>Количество нижних мест: <%= @premium.sum(:bottom_seats) %></li>
+
       <strong>Количество купейных вагонов: <%=  @coupes.count  %></strong>
-          <li>Количество верхних купейных мест: <%= @coupes.sum { |car| car.top_seats } %></li>
-          <li>Количество нижних купейных мест: <%= @coupes.sum { |car| car.bottom_seats } %></li>
+          <li>Количество нижних купейных мест: <%= @coupes.sum(:bottom_seats) %></li>
+          <li>Количество верхних купейных мест: <%= @coupes.sum(:top_seats) %></li>
 
       <strong>Количество плацкартных вагонов: <%=  @economys.count  %></strong>
-          <li>Количество верхних плацкартных мест: <%= @economys.sum { |car| car.top_seats } %></li>
-          <li>Количество нижних плацкартных мест: <%= @economys.sum { |car| car.bottom_seats } %></li>
+          <li>Количество нижних плацкартных мест: <%= @economys.sum(:bottom_seats) %></li>
+          <li>Количество верхних плацкартных мест: <%= @economys.sum(:top_seats) %></li>
+          <li>Количество нижних боковых плацкартных мест: <%= @economys.sum(:side_bottom_seats) %></li>
+          <li>Количество верхних боковых плацкартных мест: <%= @economys.sum(:side_top_seats) %></li>
+
+      <strong>Количество сидячих вагонов: <%=  @sedentary.count  %></strong>
+          <li>Количество сидячих мест: <%= @sedentary.sum(:seats) %></li>
 
     <% end %>
   </ul>
 </p>
 
-<%= link_to 'Список вагонов', train_carriages_path(@train) %><br>
-<%= link_to 'Список поездов', trains_path %>
+<strong>Список вагонов:</strong>
+<table>
+  <thead>
+    <tr>
+      <th>Вагон №</th>
+      <th>Тип вагона</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @carriages.sort{ |car1,car2| car1.number <=> car2.number }.each do |carriage| %>
+      <%  @carriage=carriage %>
+      <%= render 'carriages/carriage' %>
+    <% end %>
+
+  </tbody>
+</table>
+
+<p>
+  <%= link_to 'Добавить вагон', new_train_carriage_path(@train) %>
+</p>
+
+<p>
+  <%= link_to 'Список поездов', trains_path %>
+</p>
+

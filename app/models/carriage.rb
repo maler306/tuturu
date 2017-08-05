@@ -1,7 +1,12 @@
 class Carriage < ApplicationRecord
-  TYPE = { economy: 'плацкарт', coupe: 'купе' }.freeze
+  TYPE = { EconomyCarriage: 'плацкарт', CoupeCarriage: 'купе', PremiumCarriage: 'СВ', SeatCarriage: 'сидячий' }.freeze
   belongs_to :train
 
-  validates :number, :carriage_type, :bottom_seats, :top_seats, presence: true
+  before_validation :set_number
+  validates :number, :type,  presence: true, uniqueness: { scope: :train_id }
+
+  def set_number
+    self.number ||= train.carriages.maximum(:number).to_i + 1
+  end
 
 end

@@ -7,8 +7,10 @@ class TrainsController < ApplicationController
 
   def show
     @carriages = @train.carriages
-    @coupes = @carriages.select { |car| car.carriage_type == Carriage::TYPE.keys[1].to_s }
-    @economys = @train.carriages.select { |car| car.carriage_type == Carriage::TYPE.keys[0].to_s }
+    @economys = @carriages.where(type: Carriage::TYPE.keys[0].to_s)
+    @coupes = @carriages.where(type: Carriage::TYPE.keys[1].to_s)
+    @premium = @carriages.where(type: Carriage::TYPE.keys[2].to_s)
+    @sedentary = @carriages.where(type: Carriage::TYPE.keys[3].to_s)
   end
 
   def new
