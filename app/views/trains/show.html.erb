@@ -49,8 +49,10 @@
 
   <tbody>
     <% @carriages.sort{ |car1,car2| car1.number <=> car2.number }.each do |carriage| %>
-      <%  @carriage=carriage %>
-      <%= render 'carriages/carriage' %>
+            <tr>
+        <td><%= link_to carriage.number, train_carriage_path(@train, carriage) %></td>
+        <td><%= Carriage::TYPE[carriage.type.to_sym] %></td>
+      </tr>
     <% end %>
 
   </tbody>
