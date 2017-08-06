@@ -15,37 +15,36 @@
       <p> У поезда нет вагонов! </p>
     <% else %>
       <strong>Количество вагонов: </strong>
-      <!-- <strong> -->
       <li><%= Carriage::TYPE[:PremiumCarriage] %>: <%=  @premium.count  %></li>
       <li><%= Carriage::TYPE[:CoupeCarriage] %>: <%=  @coupes.count  %></li>
       <li><%= Carriage::TYPE[:EconomyCarriage] %>: <%=  @economys.count  %></li>
       <li><%= Carriage::TYPE[:SeatCarriage] %>: <%=  @sedentary.count  %></li>
-      <!-- </strong> -->
+      <p>
+        <a>Нумерация вагонов:</a>
+        <%= @train.sort_flag ? "с головы поезда" : "с хвоста поезда" %>
+      </p>
+      <strong>Список вагонов:</strong>
+      <table>
+        <thead>
+          <tr>
+            <th>Вагон №</th>
+            <th>Тип вагона</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @train.sort_carriages.each do |carriage| %>
+                  <tr>
+              <td><%= link_to carriage.number, train_carriage_path(@train, carriage) %></td>
+              <td><%= Carriage::TYPE[carriage.type.to_sym] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
     <% end %>
   </ul>
 </p>
-
-<strong>Список вагонов:</strong>
-<table>
-  <thead>
-    <tr>
-      <th>Вагон №</th>
-      <th>Тип вагона</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @carriages.sort{ |car1,car2| car1.number <=> car2.number }.each do |carriage| %>
-            <tr>
-        <td><%= link_to carriage.number, train_carriage_path(@train, carriage) %></td>
-        <td><%= Carriage::TYPE[carriage.type.to_sym] %></td>
-      </tr>
-    <% end %>
-
-  </tbody>
-</table>
 
 <p>
   <%= link_to 'Добавить вагон', new_train_carriage_path(@train) %>

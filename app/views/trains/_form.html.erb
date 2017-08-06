@@ -17,6 +17,11 @@
     <%= form.collection_select :current_station_id, RailwayStation.all, :id, :title %>
   </div>
 
+  <div class="field">
+    <%= form.label :sort_flag, "Нумерация вагонов c головы поезда, для обратной нумерации снимите флажок." %>
+    <%= form.check_box :sort_flag %>
+  </div>
+
   <div class="actions">
     <%= form.submit "#{train.new_record? ? 'Создать' : 'Редактировать'} "%>
   </div>
