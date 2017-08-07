@@ -15,10 +15,9 @@
       <p> У поезда нет вагонов! </p>
     <% else %>
       <strong>Количество вагонов: </strong>
-      <li><%= Carriage::TYPE[:PremiumCarriage] %>: <%=  @carriages.premium.count  %></li>
-      <li><%= Carriage::TYPE[:CoupeCarriage] %>: <%=  @carriages.coupes.count  %></li>
-      <li><%= Carriage::TYPE[:EconomyCarriage] %>: <%=  @carriages.economys.count  %></li>
-      <li><%= Carriage::TYPE[:SeatCarriage] %>: <%=  @carriages.sedentary.count  %></li>
+      <% Carriage::TYPE.each do |type, value| %>
+        <li><%= value %>: <%=  @carriages.carriages_type(type).count  %></li>
+      <% end %>
       <p>
         <a>Нумерация вагонов:</a>
         <%= @train.sort_flag ? "с головы поезда" : "с хвоста поезда" %>
