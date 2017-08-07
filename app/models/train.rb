@@ -4,6 +4,8 @@ class Train < ApplicationRecord
   has_many :tickets
   has_many :carriages, dependent: :destroy
 
+
+
     def sum_seats_by_type(carriage, type_seat)
       carriages.where(type: carriage).sum(type_seat)
     end
