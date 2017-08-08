@@ -19,7 +19,13 @@
     <strong>станций в маршруте нет</strong>
   <% else %>
     <strong>Список станций маршрута:</strong>
-    <%= render @railway_stations  %>
+    <% @railway_stations.ordered.each do  |railway_station| %>
+      <p>
+        <strong>станция № </strong>
+        <%= railway_station.railway_stations_routes.where(params[:route_id]).first.position %>
+        <%= render railway_station  %>
+      </p>
+    <% end %>
   <% end %>
 </p>
 

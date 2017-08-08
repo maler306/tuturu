@@ -7,8 +7,6 @@ class TrainsController < ApplicationController
 
   def show
     @carriages = @train.carriages
-    @coupes=@carriages.select { |car| car.carriage_type==Carriage::TYPE.keys[1].to_s }
-    @economys=@train.carriages.select { |car| car.carriage_type==Carriage::TYPE.keys[0].to_s }
   end
 
   def new
@@ -47,6 +45,6 @@ class TrainsController < ApplicationController
     end
 
     def train_params
-      params.require(:train).permit(:number, :current_station_id, :route_id)
+      params.require(:train).permit(:number, :current_station_id, :route_id, :sort_flag)
     end
 end

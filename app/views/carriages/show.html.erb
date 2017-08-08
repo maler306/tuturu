@@ -12,18 +12,10 @@
 
 <p>
   <strong>Тип вагона:</strong>
-  <%= Carriage.types[@carriage.carriage_type.to_sym] %>
+  <%= Carriage::TYPE[@carriage.type.to_sym] %>
 </p>
 
-<p>
-  <strong>Количество нижних мест:</strong>
-  <%= @carriage.bottom_seats %>
-</p>
-
-<p>
-  <strong>Количество верхних мест:</strong>
-  <%= @carriage.top_seats %>
-</p>
+<%= render @carriage.type.underscore %>
 
 <p>
   <%= link_to 'Редактировать', edit_train_carriage_path(@train, @carriage) %> |
