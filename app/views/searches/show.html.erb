@@ -1,0 +1,66 @@
+<h1>Поиск билетов</h1>
+<%= form_tag("/search", method: "get") do %>
+<strong>Выберите станцию отправления</strong>
+<div>
+  <%= select_tag :departure_station, options_from_collection_for_select(@railway_stations, "id", "title") %>
+</div>
+<strong>Выберите станцию прибытия</strong>
+<div>
+  <%= select_tag :arrival_station, options_from_collection_for_select(@railway_stations, :id, :title) %>
+</div><br>
+<div>
+   <%= submit_tag("Search") %>
+</div>
+<% end %>
+
+<div>
+  <strong>Результаты поиска маршрутов: </strong>
+  <a>станция отправления</a>
+  <strong><%= @departure_station.title %></strong>
+  <a>Станция прибытия</a>
+  <strong><%= @arrival_station.title %></strong>
+</div>
+
+<table>
+  <thead>
+  <tr>
+  <strong>
+    <td width="150px">Маршрут </td>
+    <td>Поезд №</td>
+    <td>Станция отправления</td>
+    <td>Время прибытия</td>
+    <td>Время отправления</td>
+    <td>Станция прибытия</td>
+    <td>Время прибытия</td>
+    <td>Время отправления</td>
+  </strong>
+  </tr>
+  </thead>
+  <tbody>
+      <% @trains.each do |train|  %>
+      <tr>
+        <td><%= train.route.title %></td>
+        <td><%= train.number %></td>
+        <td><%= @departure_station.title %></td>
+        <td><%= @departure_station.attr_in(:arrival_time, train.route) %></td>
+        <td><%= @departure_station.attr_in(:departure_time, train.route) %></td>
+        <td><%= @arrival_station.title %></td>
+        <td><%= @arrival_station.attr_in(:arrival_time, train.route) %></td>
+        <td><%= @arrival_station.attr_in(:departure_time, train.route) %></td>
+        <td>
+          <%= form_tag new_ticket_path, method: :get do %>
+            <%= hidden_field_tag :train_id, train.id %>
+            <%= hidden_field_tag :train_number, train.number %>
+            <%= hidden_field_tag :train_route_title, train.route.title %>
+            <%= hidden_field_tag :departure_station_id, @departure_station.id %>
+            <%= hidden_field_tag :arrival_station_id, @arrival_station.id %>
+            <%= hidden_field_tag :departure_station_title, @departure_station.title %>
+            <%= hidden_field_tag :arrival_station_title, @arrival_station.title %>
+            <%= submit_tag("купить") %>
+
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
