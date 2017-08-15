@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   end
 
   resources :railway_stations do
-    patch :update_position, on: :member
-    patch :update_arrival_time, on: :member
-    patch :update_departure_time, on: :member
-    # patch :update_station_attr, on: :member
+    # patch :update_position, on: :member
+    # patch :update_arrival_time, on: :member
+    # patch :update_departure_time, on: :member
+    patch :update_station_attr, on: :member
   end
 
   resources :routes
