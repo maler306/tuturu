@@ -1,0 +1,37 @@
+<%= form_with(model: [:admin, @ticket], local: true) do |form| %>
+  <%= render 'common/errors', resource: @ticket %>
+
+  <div class="field">
+    <%= form.label :name, "Имя" %>
+    <%= form.text_field :name, id: :ticket_name %>
+  </div>
+  <div class="field">
+    <%= form.label :surname, "Фамилия" %>
+    <%= form.text_field :surname, id: :ticket_surname %>
+  </div>
+    <div class="field">
+    <%= form.label :doc_type, "Тип документа" %>
+    <%= form.text_field :doc_type, id: :ticket_doc_type %>
+  </div>
+    <div class="field">
+    <%= form.label :doc_number, "Номер документа" %>
+    <%= form.text_field :doc_number, id: :ticket_doc_number %>
+  </div>
+    <div class="field">
+    <%= form.label :doc_expire, "Документ действителен до" %>
+    <%= form.date_field :doc_expire, id: :ticket_doc_expire %>
+  </div>
+  <div class="field">
+    <%= form.label :user_id, "Выберите пользователя." %>
+    <%= form.collection_select :user_id, User.all, :id, :full_name %>
+  </div>
+  <div class="field">
+    <%= form.hidden_field :train_id, :value => @ticket[:train_id] %>
+    <%= form.hidden_field :departure_station_id, :value  => @ticket[:departure_station_id] %>
+    <%= form.hidden_field :arrival_station_id, :value  => @ticket[:arrival_station_id] %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "подтвердить" %>
+  </div>
+<% end %>

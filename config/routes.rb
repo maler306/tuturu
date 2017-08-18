@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  # get 'tickets/new'
-  # get 'tickets/create'
-  # get 'tickets/show'
-  namespace :admin do
+  root 'searches#new'
 
+  namespace :admin do
+    get "index", to: 'base#index'
     resources :trains do
       resources :carriages
     end
@@ -18,13 +17,12 @@ Rails.application.routes.draw do
     end
 
     resources :routes
-
+    resources :tickets
   end
 
   resource :search, only: [:new, :show, :create]
   resources :tickets,  except: [:edit, :update]
 
-  root to: "welcome#index"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
