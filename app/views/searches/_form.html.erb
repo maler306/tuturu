@@ -1,0 +1,13 @@
+<%= form_tag("/search", method: "get") do %>
+<strong>Выберите станцию отправления</strong>
+<div>
+  <%= select_tag :departure_station, options_from_collection_for_select(@railway_stations, "id", "title") %>
+</div>
+<strong>Выберите станцию прибытия</strong>
+<div>
+  <%= select_tag :arrival_station, options_from_collection_for_select(@railway_stations, :id, :title) %>
+</div><br>
+<div>
+   <%= submit_tag("Search") %>
+</div>
+<% end %>

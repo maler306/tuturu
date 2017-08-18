@@ -43,10 +43,7 @@
     <%= form.label :doc_expire, "Документ действителен до" %>
     <%= form.date_field :doc_expire, id: :ticket_doc_expire %>
   </div>
-  <div class="field">
-    <%= form.label :user_id, "Выберите пользователя." %>
-    <%= form.collection_select :user_id, User.all, :id, :id %>
-  </div>
+
   <div class="field">
     <%= form.hidden_field :train_id, :value => params[:train_id] %>
     <%= form.hidden_field :departure_station_id, :value  => params[:departure_station_id] %>

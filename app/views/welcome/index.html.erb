@@ -1,0 +1,12 @@
+<h1>TUTURU онлайн-сервис покупки билетов</h1>
+
+<p>
+  <a>Привет, </a>
+  <%= current_user.full_name %>!
+</p>
+
+<div><%= link_to 'Список всех станций', admin_railway_stations_path %></div>
+
+<h2> Найти маршрут</h2>
+
+<%= render 'searches/form' %>
