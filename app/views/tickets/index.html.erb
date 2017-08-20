@@ -1,1 +1,26 @@
 <h1>Купленные билеты</h1>
+
+<p>
+  <a>Пользователь</a>
+  <%= current_user.full_name %>
+</p>
+
+<table>
+    <thead>
+      <tr>
+        <th>ФИО</th>
+        <th>Маршрут</th>
+        <th>Поезд №</th>
+        <th>Начальная станция</th>
+        <th>Конечная станция</th>
+      </tr>
+    </thead>
+    <tbody>
+<% #@tickets.each do |ticket| %>
+<%= render @tickets %>
+<% #end %>
+    </tbody>
+  </table>
+<div>
+  <%= link_to 'Новый поиск', new_search_path %>
+</div>

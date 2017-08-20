@@ -1,7 +1,9 @@
 class TicketsController < ApplicationController
+  # before_action :authenticate_user!, only: :create
   before_action :set_ticket, only: [:show, :destroy]
 
   def index
+    @tickets = current_user.tickets
   end
 
   def new
@@ -9,7 +11,7 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = Ticket.new(ticket_params)
+    @ticket = current_user.tickets.new(ticket_params)
     if @ticket.save
       redirect_to @ticket
     else
@@ -21,6 +23,8 @@ class TicketsController < ApplicationController
   end
 
   def destroy
+    @ticket.destroy
+      redirect_to tickets_path, notice: 'Билет удален.'
   end
 
   private
@@ -29,6 +33,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:user_id, :train_id, :departure_station_id, :arrival_station_id, :name, :surname, :doc_type, :doc_number, :doc_expire)
+    params.require(:ticket).permit(:train_id, :departure_station_id, :arrival_station_id, :name, :surname, :doc_type, :doc_number, :doc_expire)
   end
 end

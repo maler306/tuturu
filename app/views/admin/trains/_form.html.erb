@@ -1,0 +1,28 @@
+<%= form_with(model: [:admin, @train], local: true) do |form| %>
+  <%= render 'common/errors', resource: @train %>
+
+
+  <div class="field">
+    <%= form.label :number, "Номер поезда" %>
+    <%= form.text_field :number, id: :train_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :current_station, "Выберите маршрут." %>
+    <%= form.collection_select :route_id, Route.all, :id, :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :route, "Выберите станцию." %>
+    <%= form.collection_select :current_station_id, RailwayStation.all, :id, :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sort_flag, "Нумерация вагонов c головы поезда, для обратной нумерации снимите флажок." %>
+    <%= form.check_box :sort_flag %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "#{@train.new_record? ? 'Создать' : 'Редактировать'} "%>
+  </div>
+<% end %>

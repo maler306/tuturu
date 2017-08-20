@@ -1,0 +1,20 @@
+<h1>Купленные билеты</h1>
+
+<table>
+    <thead>
+      <tr>
+        <th>Пользователь</th>
+        <th>ФИО</th>
+        <th>Маршрут</th>
+        <th>Поезд №</th>
+        <th>Начальная станция</th>
+        <th>Конечная станция</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @tickets %>
+    </tbody>
+  </table>
+<div>
+  <%= link_to 'Новый поиск', new_search_path %>
+</div>

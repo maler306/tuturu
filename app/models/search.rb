@@ -9,7 +9,7 @@ class Search < ApplicationRecord
 
   def self.find_trains(departure_station, arrival_station)
     @routes = find_routes(departure_station, arrival_station)
-    Train.joins(:route).where('route_id' => @routes.pluck(:id))
+    Train.where('route_id' => @routes.pluck(:id))
   end
 
 end
