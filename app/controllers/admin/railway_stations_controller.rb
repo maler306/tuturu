@@ -27,11 +27,11 @@ class Admin::RailwayStationsController < Admin::BaseController
   end
 
   def update
-      if @railway_station.update(railway_station_params)
-        redirect_to [:admin, @railway_station], notice: 'Станция была успешно обновлена.'
-      else
-        render :edit
-      end
+    if @railway_station.update(railway_station_params)
+      redirect_to [:admin, @railway_station], notice: 'Станция была успешно обновлена.'
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -41,20 +41,6 @@ class Admin::RailwayStationsController < Admin::BaseController
     end
   end
 
-  # def update_position
-  #   @railway_station.update_station_attr(:position, @route, params[:position])
-  #   redirect_to @route
-  # end
-
-  # def update_arrival_time
-  #   @railway_station.update_station_attr(:arrival_time, @route, params[:arrival_time])
-  #   redirect_to @route
-  # end
-
-  # def update_departure_time
-  #   @railway_station.update_station_attr(:departure_time, @route, params[:departure_time])
-  #   redirect_to @route
-  # end
    def update_station_attr
     attribute = params[:attribute]
     @railway_station.update_station_attr(attribute.to_sym, @route, params[attribute.to_sym])

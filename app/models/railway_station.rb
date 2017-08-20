@@ -24,8 +24,4 @@ class RailwayStation < ApplicationRecord
     @station_route = railway_stations_routes.where(route: route).first
   end
 
-  # def station_position(route)
-  #   railway_stations_routes.find_by({'railway_stations_routes.route_id' => route[:id] }).try(:position)
-  # end
-
 end
