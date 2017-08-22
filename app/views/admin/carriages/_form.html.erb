@@ -1,4 +1,5 @@
 <%= form_with(model: [:admin, @train, @carriage.becomes(Carriage)] , local: true) do |form| %>
+  <%= render 'common/errors', resource: @carriage.becomes(Carriage) %>
 
   <div class="field">
     <%= form.label :type %><br>
@@ -31,6 +32,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "#{@carriage.new_record? ? 'Создать' : 'Редактировать'} "%>
+    <%= form.submit  t('.submit', action: @carriage.new_record? ? 'Создать' : 'Редактировать') %>
   </div>
 <% end %>

@@ -1,33 +1,35 @@
-<!-- <p id="notice"><%= notice %></p> -->
-
 <p>
-  <strong>Номер поезда:</strong>
+  <strong><%=  t('admin.trains.attributes.train_number') %></strong>
   <%= @train.number %>
 </p>
-
 <p>
-  <strong>Маршрут:</strong>
-  <%= @train.route.nil? ? "Маршрут не назначен" : @train.route.title %>
+  <strong><%=  t('admin.trains.attributes.route') %></strong>
+  <%= @train.route.nil? ? t('admin.trains.show.route_zero') : @train.route.title %>
 </p>
+<p>
+  <strong><%=  t('admin.trains.attributes.current_station') %></strong>
+  <%= @train.current_station.title %>
+</p>
+
 
   <ul>
     <% if @carriages.empty? %>
-      <p> У поезда нет вагонов! </p>
+      <p> <%= t('admin.trains.show.carriage_sum_zero') %> </p>
     <% else %>
-      <strong>Количество вагонов: </strong>
+      <strong><%= t('admin.trains.show.carriage_sum') %></strong>
       <% Carriage::TYPE.each do |type, value| %>
         <li><%= value %>: <%=  @carriages.carriages_type(type).count  %></li>
       <% end %>
       <p>
-        <a>Нумерация вагонов:</a>
-        <%= @train.sort_flag ? "с головы поезда" : "с хвоста поезда" %>
+        <a><%= t('admin.carriages.attributes.sort_flag') %></a>
+        <%= @train.sort_flag ? t('admin.carriages.attributes.sort_flag_head') : t('admin.carriages.attributes.sort_flag_end') %>
       </p>
-      <strong>Список вагонов:</strong>
+      <strong><%= t('admin.carriages.index.title') %></strong>
       <table>
         <thead>
           <tr>
-            <th>Вагон №</th>
-            <th>Тип вагона</th>
+            <th><%= t('admin.carriages.attributes.number') %></th>
+            <th><%= t('admin.carriages.attributes.type') %></th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -46,10 +48,10 @@
 </p>
 
 <p>
-  <%= link_to 'Добавить вагон', new_admin_train_carriage_path(@train) %>
+  <%= link_to t('admin.carriages.new.title') , new_admin_train_carriage_path(@train) %>
 </p>
 
 <p>
-  <%= link_to 'Список поездов', admin_trains_path %>
+  <%= link_to t('admin.trains.index.title'), admin_trains_path %>
 </p>
 

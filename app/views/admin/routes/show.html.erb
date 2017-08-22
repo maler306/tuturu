@@ -1,31 +1,29 @@
-<!-- <p id="notice"><%= notice %></p> -->
-
 <p>
-  <strong>Маршрут:</strong>
+  <strong><%= t('activerecord.attributes.route.title') %>:</strong>
   <%= @route.title %>
 </p>
 
 <p>
   <% if @trains.empty? %>
-    <strong>Поездов на маршруте нет</strong>
+    <strong><%= t('.route_trains_zero') %></strong>
   <% else %>
-    <strong>Поезда на маршруте:</strong>
+    <strong><%= t('.route_trains') %>:</strong>
     <%= render 'admin/trains/trains'  %>
   <% end %>
 </p>
 
-    <strong>Список станций маршрута:</strong>
+    <strong><%= t('.route_stations') %>:</strong>
 <p>
   <% if @railway_stations.empty? %>
-    <strong>станций в маршруте нет</strong>
+    <strong><%= t('.route_stations_zero') %></strong>
   <% else %>
     <table>
       <thead>
       <tr>
-        <td width="100px">Название</td>
-        <td>Позиция</td>
-        <td>Прибытие</td>
-        <td>Отправление</td>
+        <td width="100px"><%= t('activerecord.attributes.railway_station.title') %></td>
+        <td><%= t('.route_station_position') %></td>
+        <td><%= t('.station_time_arrival') %></td>
+        <td><%= t('.station_time_departure') %></td>
       </tr>
       </thead>
       <tbody>
@@ -37,7 +35,7 @@
                 <%= number_field_tag :position, station.attr_in(:position, @route) %>
                 <%= hidden_field_tag :attribute, :position %>
                 <%= hidden_field_tag :route_id, @route.id %>
-                <%= submit_tag "Изменить" %>
+                <%= submit_tag t('.submit_change') %>
                 <% end %>
             </td>
             <td>
@@ -45,7 +43,7 @@
                 <%= time_field_tag :arrival_time, station.attr_in(:arrival_time, @route) %>
                 <%= hidden_field_tag :attribute, :arrival_time %>
                 <%= hidden_field_tag :route_id, @route.id %>
-                <%= submit_tag "Изменить" %>
+                <%= submit_tag t('.submit_change') %>
                 <% end %>
             </td>
             <td>
@@ -53,7 +51,7 @@
                 <%= time_field_tag :departure_time, station.attr_in(:departure_time, @route) %>
                 <%= hidden_field_tag :attribute, :departure_time %>
                 <%= hidden_field_tag :route_id, @route.id %>
-                <%= submit_tag "Изменить" %>
+                <%= submit_tag t('.submit_change') %>
                 <% end %>
             </td>
           </tr>
@@ -63,5 +61,5 @@
   <% end %>
 </p>
 
-<%= link_to 'Редактировать', edit_admin_route_path(@route) %> |
-<%= link_to 'Назад', admin_routes_path %>
+<%= link_to t('common.edit'), edit_admin_route_path(@route) %> |
+<%= link_to t('common.back'), admin_routes_path %>

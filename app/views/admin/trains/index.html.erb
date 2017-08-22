@@ -1,9 +1,7 @@
-<!-- <p id="notice"><%= notice %></p> -->
-
-<h1>Поезда</h1>
+<h1><%= t('.title') %></h1>
 
 <%= render 'trains' %>
 
 <br>
 
-<%= link_to 'Новый поезд', new_admin_train_path %>
+<%= link_to t('.new_train') , new_admin_train_path %>
