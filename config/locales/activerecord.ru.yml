@@ -27,6 +27,12 @@ ru:
         side_top_seats: 'Боковые верхние места'
         side_bottom_seats: 'Боковые нижние места'
         seats: 'Сидячие места'
+      ticket:
+        name: 'Имя'
+        surname: 'Фамилия'
+        doc_type: 'Документ'
+        doc_number: 'Тип документа'
+        doc_expire: 'Срок действия документа'
     errors:
       messages:
         blank: 'не может быть пустым'
@@ -37,4 +43,8 @@ ru:
               blank: 'должно быть указано'
         carriage:
           greater_than: 'не должны быть пустыми'
-          presence: 'должен быть указан'
+          attributes:
+            type:
+              blank: 'должен быть указан'
+        ticket:
+          blank: ' - поле должны быть заполнено!'

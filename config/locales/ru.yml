@@ -4,7 +4,11 @@ ru:
     edit: 'Редактировать'
     show: 'Показать'
     delete: 'Удалить'
-    errors: 'При заполнении формы возникли ошибки'
+    new_search: 'Новый поиск'
+    buy: 'купить'
+    form_errors: 'при заполнении формы'
+    error: 'ошибка'
+    errors: 'ошибки'
     delete_confirm_message: 'Вы на 100% уверены?'
   admin:
     railway_stations:
@@ -71,6 +75,19 @@ ru:
         side_top_seats: 'боковые верхние места'
         side_bottom_seats: 'боковые нижние места'
         seats: 'места'
+  searches:
+    form:
+      submit: 'Искать'
+      departure_station: 'Станция отправления'
+      arrival_station: 'Станция прибытия'
+    show:
+      departure_station: 'Станция отправления'
+      arrival_station: 'Станция прибытия'
+      route: 'Маршрут'
+      train_number: 'Номер поезда'
+      departure_time: 'Время отправления'
+      arrival_time: 'Время прибытия'
+
 
 
 

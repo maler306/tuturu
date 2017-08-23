@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170818055005) do
+ActiveRecord::Schema.define(version: 20170822073817) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer "number"
-    t.integer "bottom_seats"
-    t.integer "top_seats"
+    t.integer "bottom_seats", default: 0
+    t.integer "top_seats", default: 0
     t.integer "train_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type"
-    t.integer "side_top_seats"
-    t.integer "side_bottom_seats"
-    t.integer "seats"
+    t.integer "side_top_seats", default: 0
+    t.integer "side_bottom_seats", default: 0
+    t.integer "seats", default: 0
     t.index ["train_id"], name: "index_carriages_on_train_id"
   end
 

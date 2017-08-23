@@ -1,50 +1,49 @@
-<h1>Купить билет</h1>
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Маршрут</th>
+      <th>Поезд №</th>
+      <th>Станция отправления</th>
+      <th>Станция прибытия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="bg-success">
+      <th scope="row"><%= params[:train_route_title] %></th>
+      <td><%= params[:train_number] %></td>
+      <td><%= params[:departure_station_title] %></td>
+      <td><%= params[:arrival_station_title] %></td>
+    </tr>
+    <tr>
+  </tbody>
+</table>
 
-<div>
-  <a>Маршрут:</a>
-  <a><%= params[:train_route_title] %></a>
-</div>
-
-<div>
-<a>Поезд №:</a>
-<strong><%= params[:train_number] %></strong>
-</div>
-
-<div>
-<a>Станция отправления:</a>
-<strong><%= params[:departure_station_title] %></strong>
-</div>
-
-<div>
-<a>Станция прибытия:</a>
-<strong><%= params[:arrival_station_title] %></strong>
-</div>
-
+<h3>Купить билет</h3>
 <%= form_with(model: @ticket, local: true) do |form| %>
   <%= render 'common/errors', resource: @ticket %>
 
-  <div class="field">
-    <%= form.label :name, "Имя" %>
+  <div class="form-group">
+    <%= form.label :name %>
     <%= form.text_field :name, id: :ticket_name %>
   </div>
-  <div class="field">
-    <%= form.label :surname, "Фамилия" %>
+  <div class="form-group">
+    <%= form.label :surname %>
     <%= form.text_field :surname, id: :ticket_surname %>
   </div>
-    <div class="field">
-    <%= form.label :doc_type, "Тип документа" %>
+    <div class="form-group">
+    <%= form.label :doc_type %>
     <%= form.text_field :doc_type, id: :ticket_doc_type %>
   </div>
-    <div class="field">
-    <%= form.label :doc_number, "Номер документа" %>
+    <div class="form-group">
+    <%= form.label :doc_number %>
     <%= form.text_field :doc_number, id: :ticket_doc_number %>
   </div>
-    <div class="field">
-    <%= form.label :doc_expire, "Документ действителен до" %>
+    <div class="form-group">
+    <%= form.label :doc_expire %>
     <%= form.date_field :doc_expire, id: :ticket_doc_expire %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.hidden_field :train_id, :value => params[:train_id] %>
     <%= form.hidden_field :departure_station_id, :value  => params[:departure_station_id] %>
     <%= form.hidden_field :arrival_station_id, :value  => params[:arrival_station_id] %>

@@ -1,13 +1,16 @@
-<%= form_tag("/search", method: "get") do %>
-<strong>Выберите станцию отправления</strong>
-<div>
-  <%= select_tag :departure_station, options_from_collection_for_select(@railway_stations, "id", "title") %>
+
+<div class="row">
+  <%= form_tag("/search", method: "get") do %>
+    <div class="col-md-4">
+      <strong><%= t('.departure_station')  %></strong>
+      <%= select_tag :departure_station, options_from_collection_for_select(@railway_stations, "id", "title"), class: 'form-control' %>
+    </div>
+    <div class="col-md-4">
+      <strong><%= t('.arrival_station')  %></strong>
+      <%= select_tag :arrival_station, options_from_collection_for_select(@railway_stations, :id, :title), class: 'form-control' %>
+    </div>
+    <div class="col-md-4">
+      <br><%= submit_tag(t('.submit'), class: 'btn btn-primary find') %>
+    </div>
+  <% end %>
 </div>
-<strong>Выберите станцию прибытия</strong>
-<div>
-  <%= select_tag :arrival_station, options_from_collection_for_select(@railway_stations, :id, :title) %>
-</div><br>
-<div>
-   <%= submit_tag("Search") %>
-</div>
-<% end %>

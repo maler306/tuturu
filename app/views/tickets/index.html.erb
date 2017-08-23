@@ -1,26 +1,38 @@
-<h1>Купленные билеты</h1>
+<h3>Купленные билеты</h3>
 
 <p>
   <a>Пользователь</a>
   <%= current_user.full_name %>
 </p>
 
-<table>
+<table class="table table-striped">
     <thead>
       <tr>
+    <div class="row">
+      <div class="col-md-2">
         <th>ФИО</th>
+      </div>
+      <div class="col-md-2">
         <th>Маршрут</th>
+      </div>
+      <div class="col-md-2">
         <th>Поезд №</th>
+      </div>
+      <div class="col-md-2">
         <th>Начальная станция</th>
+      </div>
+      <div class="col-md-2">
         <th>Конечная станция</th>
+      </div>
+    </div>
       </tr>
     </thead>
     <tbody>
-<% #@tickets.each do |ticket| %>
 <%= render @tickets %>
-<% #end %>
     </tbody>
-  </table>
+  </table class="table table-striped">
 <div>
-  <%= link_to 'Новый поиск', new_search_path %>
+  <%= link_to t('common.new_search'), new_search_path, class: 'btn btn-primary' %>
 </div>
+
+
