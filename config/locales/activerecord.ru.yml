@@ -1,0 +1,50 @@
+ru:
+  activerecord:
+    models:
+      railway_station: 'Станция'
+      train: 'Поезд'
+      carriage: 'Вагон'
+      route: 'Маршрут'
+      ticket: 'Билет'
+      user: 'Пользователь'
+    attributes:
+      railway_station:
+        title: 'Название станции'
+      train:
+        number: 'Номер поезда'
+        current_station: "Текущая станция"
+        route: 'Маршрут'
+        sort_flag: 'Нумерация вагонов c головы поезда, для обратной нумерации снимите флажок'
+      route:
+        title: 'Имя маршрута'
+        railway_station_ids: 'Список станций маршрута'
+      carriage:
+        number: 'Номер вагона'
+        type: 'Тип вагона'
+        number: 'Номер вагона'
+        top_seats: 'Верхние места'
+        bottom_seats: 'Нижние места'
+        side_top_seats: 'Боковые верхние места'
+        side_bottom_seats: 'Боковые нижние места'
+        seats: 'Сидячие места'
+      ticket:
+        name: 'Имя'
+        surname: 'Фамилия'
+        doc_type: 'Документ'
+        doc_number: 'Тип документа'
+        doc_expire: 'Срок действия документа'
+    errors:
+      messages:
+        blank: 'не может быть пустым'
+      models:
+        railway_station:
+          attributes:
+            title:
+              blank: 'должно быть указано'
+        carriage:
+          greater_than: 'не должны быть пустыми'
+          attributes:
+            type:
+              blank: 'должен быть указан'
+        ticket:
+          blank: ' - поле должны быть заполнено!'

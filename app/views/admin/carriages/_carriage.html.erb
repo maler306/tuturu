@@ -1,9 +1,7 @@
       <tr>
         <td><%= @carriage.number %></td>
         <td><%= Carriage::TYPE[@carriage.type.to_sym] %></td>
-        <!-- <td><%= @carriage.bottom_seats %></td> -->
-        <!-- <td><%= @carriage.top_seats %></td> -->
-        <td><%= link_to 'Показать', admin_train_carriage_path(@train, @carriage) %></td>
-        <td><%= link_to 'Редактировать', edit_admin_train_carriage_path(@train, @carriage) %></td>
-        <td><%= link_to 'Удалить', admin_train_carriage_path(@train, @carriage), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <td><%= link_to t('common.show'), admin_train_carriage_path(@train, @carriage) %></td>
+        <td><%= link_to t('common.edit'), edit_admin_train_carriage_path(@train, @carriage) %></td>
+        <td><%= link_to t('common.delete'), admin_train_carriage_path(@train, @carriage), method: :delete, data: { confirm: t('common.delete_confirm_message') } %></td>
       </tr>

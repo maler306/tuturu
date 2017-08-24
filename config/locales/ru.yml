@@ -1,0 +1,94 @@
+ru:
+  common:
+    back: 'Назад'
+    edit: 'Редактировать'
+    show: 'Показать'
+    delete: 'Удалить'
+    new_search: 'Новый поиск'
+    buy: 'купить'
+    form_errors: 'при заполнении формы'
+    error: 'ошибка'
+    errors: 'ошибки'
+    delete_confirm_message: 'Вы на 100% уверены?'
+  admin:
+    railway_stations:
+      new:
+        title: 'Новая станция'
+      edit:
+        title: 'Редактировать станцию'
+      form:
+        submit: '%{action} станцию'
+      index:
+        title: 'Железнодорожные станции'
+    trains:
+      index:
+        title: 'Список поездов'
+        new_train: 'добавьте поезд'
+      form:
+        submit: '%{action} поезд'
+      edit:
+        title: 'Редактировать поезд'
+      new:
+        title: 'Новый поезд'
+      attributes:
+          train_number: 'Номер поезда:'
+          route: 'Маршрут:'
+          current_station: 'Поезд находится на станции:'
+          sort_flag: 'Нумерация вагонов:'
+          sort_flag_head: 'с головы поезда'
+          sort_flag_end: 'с хвоста поезда'
+      show:
+        carriage_sum: 'Количество вагонов:'
+        carriage_sum_zero: 'У поезда нет вагонов!'
+        route_zero: 'Маршрут не назначен'
+    routes:
+      form:
+        submit: '%{action} маршрут'
+      index:
+        title: 'Маршруты'
+        new_route: 'создайте маршрут'
+      new:
+        title: 'Новый маршрут'
+      edit:
+        title: 'Редактирование маршрута'
+      show:
+        route_trains: 'Поезда на маршруте'
+        route_trains_zero: 'Поездов на маршруте нет'
+        route_stations: 'Список станций маршрута'
+        route_stations_zero: 'станций в маршруте нет'
+        route_station_position: 'Номер станции в маршруте'
+        station_time_arrival: 'Прибытие'
+        station_time_departure: 'Отправление'
+        submit_change: 'Изменить'
+    carriages:
+      new:
+        title: 'Новый вагон'
+      index:
+        title: 'список вагонов'
+      form:
+        submit: '%{action} вагон'
+      attributes:
+        type: 'тип вагона'
+        number: 'номер вагона'
+        top_seats: 'верхние места'
+        bottom_seats: 'нижние места'
+        side_top_seats: 'боковые верхние места'
+        side_bottom_seats: 'боковые нижние места'
+        seats: 'места'
+  searches:
+    form:
+      submit: 'Искать'
+      departure_station: 'Станция отправления'
+      arrival_station: 'Станция прибытия'
+    show:
+      departure_station: 'Станция отправления'
+      arrival_station: 'Станция прибытия'
+      route: 'Маршрут'
+      train_number: 'Номер поезда'
+      departure_time: 'Время отправления'
+      arrival_time: 'Время прибытия'
+
+
+
+
+

@@ -7,7 +7,11 @@ class TicketsController < ApplicationController
   end
 
   def new
-    @ticket = Ticket.new
+    @ticket = Ticket.new(
+      train_id: params[:train_id],
+      departure_station_id: params[:departure_station_id],
+      arrival_station_id: params[:arrival_station_id]
+    )
   end
 
   def create

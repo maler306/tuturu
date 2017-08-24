@@ -7,5 +7,5 @@
   <td><%= ticket.train.number %></td>
   <td ><%= ticket.departure_station.title %></td>
   <td><%= ticket.arrival_station.title %></td>
-  <td><%= link_to 'Удалить', ticket, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+  <td><%= link_to t('common.delete', class: 'btn btn-danger'), ticket, method: :delete, data: { confirm: t('common.delete_confirm_message') } %></td>
 </tr><br>
