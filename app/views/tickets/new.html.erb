@@ -9,11 +9,10 @@
   </thead>
   <tbody>
     <tr class="bg-success">
-      <th scope="row"><%= params[:train_route_title] %></th>
-      <td><%= params[:train_number] %></td>
-      <td><%= params[:departure_station_title] %></td>
-      <td><%= params[:arrival_station_title] %></td>
-    </tr>
+      <th scope="row"><%= @train.route.title %></th>
+      <td><%= @train.number %></td>
+      <td><%= @departure_station.title %></td>
+      <td><%= @arrival_station.title %></td>    </tr>
     <tr>
   </tbody>
 </table>

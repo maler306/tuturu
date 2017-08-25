@@ -50,12 +50,8 @@
         <% current_user.admin? ? buy_pass = new_admin_ticket_path : buy_pass = new_ticket_path %>
             <%= form_tag buy_pass, method: :get do %>
             <%= hidden_field_tag :train_id, train.id %>
-            <%= hidden_field_tag :train_number, train.number %>
-            <%= hidden_field_tag :train_route_title, train.route.title %>
             <%= hidden_field_tag :departure_station_id, @departure_station.id %>
             <%= hidden_field_tag :arrival_station_id, @arrival_station.id %>
-            <%= hidden_field_tag :departure_station_title, @departure_station.title %>
-            <%= hidden_field_tag :arrival_station_title, @arrival_station.title %>
             <%= submit_tag(t('common.buy'), class: "btn btn-success") %>
 
           <% end %>

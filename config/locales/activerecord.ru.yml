@@ -31,7 +31,7 @@ ru:
         name: 'Имя'
         surname: 'Фамилия'
         doc_type: 'Документ'
-        doc_number: 'Тип документа'
+        doc_number: 'Номер документа'
         doc_expire: 'Срок действия документа'
     errors:
       messages:
