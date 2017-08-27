@@ -87,6 +87,24 @@ ru:
       train_number: 'Номер поезда'
       departure_time: 'Время отправления'
       arrival_time: 'Время прибытия'
+  tickets_mailer:
+    buy_ticket:
+      letter_subject: 'Вы купили билет'
+      greeting: 'Здравствуйте, %{user}!'
+      thank_you: 'Спасибо за Ваш заказ!'
+      order_details: 'Вы купили билет по маршруту %{route}.'
+      ticket_details: 'Информация о билете доступна по ссылке '
+      view: '(посмотреть билет).'
+      view_all: 'Посмотреть все билеты вы можете '
+      here: 'здесь.'
+    cancell_ticket:
+      letter_subject: 'Вы отменили покупку билета'
+      greeting: 'Здравствуйте, %{user}!'
+      cancellation_details: 'Вы отменили покупку билета по маршруту %{route}.'
+      view_all: 'Посмотреть оставшиеся билеты вы можете '
+      here: 'здесь.'
+
+
 
 
 
