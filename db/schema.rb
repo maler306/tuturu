@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20170826034638) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "carriages", force: :cascade do |t|
     t.integer "number"
     t.integer "bottom_seats", default: 0
     t.integer "top_seats", default: 0
-    t.integer "train_id"
+    t.bigint "train_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type"
@@ -34,8 +37,8 @@ ActiveRecord::Schema.define(version: 20170826034638) do
   end
 
   create_table "railway_stations_routes", force: :cascade do |t|
-    t.integer "railway_station_id"
-    t.integer "route_id"
+    t.bigint "railway_station_id"
+    t.bigint "route_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position"
@@ -53,10 +56,10 @@ ActiveRecord::Schema.define(version: 20170826034638) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "train_id"
-    t.integer "departure_station_id"
-    t.integer "arrival_station_id"
+    t.bigint "user_id"
+    t.bigint "train_id"
+    t.bigint "departure_station_id"
+    t.bigint "arrival_station_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
@@ -74,8 +77,8 @@ ActiveRecord::Schema.define(version: 20170826034638) do
     t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "route_id"
-    t.integer "current_station_id"
+    t.bigint "route_id"
+    t.bigint "current_station_id"
     t.boolean "sort_flag", default: true
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
@@ -100,4 +103,13 @@ ActiveRecord::Schema.define(version: 20170826034638) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "carriages", "trains"
+  add_foreign_key "railway_stations_routes", "railway_stations"
+  add_foreign_key "railway_stations_routes", "routes"
+  add_foreign_key "tickets", "railway_stations", column: "arrival_station_id"
+  add_foreign_key "tickets", "railway_stations", column: "departure_station_id"
+  add_foreign_key "tickets", "trains"
+  add_foreign_key "tickets", "users"
+  add_foreign_key "trains", "railway_stations", column: "current_station_id"
+  add_foreign_key "trains", "routes"
 end
