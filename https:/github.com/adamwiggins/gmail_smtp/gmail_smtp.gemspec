@@ -9,14 +9,14 @@ Gem::Specification.new do |s|
   s.version     = GmailSmtp::VERSION
   s.authors     = ["Yerkin"]
   s.email       = ["maler306@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of GmailSmtp."
-  s.description = "TODO: Description of GmailSmtp."
+  s.homepage    = "https://stormy-shore-12316.herokuapp.com"
+  s.summary     = "Rails & Postgres CMS Engine"
+  s.description = "Rails & Postgres CMS Engine (find ticket service)."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 5.1.2"
 
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "pg"
 end
