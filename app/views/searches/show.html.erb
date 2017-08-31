@@ -47,13 +47,17 @@
         <td><%= @arrival_station.attr_in(:arrival_time, train.route) %></td>
         <td><%= @arrival_station.attr_in(:departure_time, train.route) %></td>
         <td>
-        <% current_user.admin? ? buy_pass = new_admin_ticket_path : buy_pass = new_ticket_path %>
-            <%= form_tag buy_pass, method: :get do %>
-            <%= hidden_field_tag :train_id, train.id %>
-            <%= hidden_field_tag :departure_station_id, @departure_station.id %>
-            <%= hidden_field_tag :arrival_station_id, @arrival_station.id %>
-            <%= submit_tag(t('common.buy'), class: "btn btn-success") %>
-
+        <% if current_user %>
+          <% current_user.admin? ? buy_pass = new_admin_ticket_path : buy_pass = new_ticket_path %>
+              <%= form_tag buy_pass, method: :get do %>
+              <%= hidden_field_tag :train_id, train.id %>
+              <%= hidden_field_tag :departure_station_id, @departure_station.id %>
+              <%= hidden_field_tag :arrival_station_id, @arrival_station.id %>
+              <%= submit_tag(t('common.buy'), class: "btn btn-success") %>
+            <% end %>
+          <% else %>
+          <%= link_to "Для покупки билета необходима регистрация", new_user_session_path %>
+          <!-- <td>Для покупки билета необходима регистрация</td> -->
           <% end %>
         </td>
       </tr>
