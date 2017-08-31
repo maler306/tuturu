@@ -7,8 +7,8 @@ require "gmail_smtp/version"
 Gem::Specification.new do |s|
   s.name        = "gmail_smtp"
   s.version     = GmailSmtp::VERSION
-  s.authors     = ["Yerkin"]
-  s.email       = ["maler306@gmail.com"]
+  s.authors     = ["Eric"]
+  s.email       = ["maler0763@gmail.com"]
   s.homepage    = "https://stormy-shore-12316.herokuapp.com"
   s.summary     = "Rails & Postgres CMS Engine"
   s.description = "Rails & Postgres CMS Engine (find ticket service)."
