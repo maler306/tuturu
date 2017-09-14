@@ -10,19 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822073817) do
+ActiveRecord::Schema.define(version: 20170826034638) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "carriages", force: :cascade do |t|
     t.integer "number"
     t.integer "bottom_seats", default: 0
     t.integer "top_seats", default: 0
-    t.integer "train_id"
+    t.bigint "train_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type"
     t.integer "side_top_seats", default: 0
     t.integer "side_bottom_seats", default: 0
     t.integer "seats", default: 0
+    t.index ["id", "type"], name: "index_carriages_on_id_and_type"
     t.index ["train_id"], name: "index_carriages_on_train_id"
   end
 
@@ -33,13 +37,14 @@ ActiveRecord::Schema.define(version: 20170822073817) do
   end
 
   create_table "railway_stations_routes", force: :cascade do |t|
-    t.integer "railway_station_id"
-    t.integer "route_id"
+    t.bigint "railway_station_id"
+    t.bigint "route_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position"
     t.time "arrival_time"
     t.time "departure_time"
+    t.index ["railway_station_id", "route_id"], name: "index_unique_pair_of_stations_and_routes", unique: true
     t.index ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id"
     t.index ["route_id"], name: "index_railway_stations_routes_on_route_id"
   end
@@ -51,10 +56,10 @@ ActiveRecord::Schema.define(version: 20170822073817) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "train_id"
-    t.integer "departure_station_id"
-    t.integer "arrival_station_id"
+    t.bigint "user_id"
+    t.bigint "train_id"
+    t.bigint "departure_station_id"
+    t.bigint "arrival_station_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
@@ -72,8 +77,8 @@ ActiveRecord::Schema.define(version: 20170822073817) do
     t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "route_id"
-    t.integer "current_station_id"
+    t.bigint "route_id"
+    t.bigint "current_station_id"
     t.boolean "sort_flag", default: true
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
@@ -98,4 +103,13 @@ ActiveRecord::Schema.define(version: 20170822073817) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "carriages", "trains"
+  add_foreign_key "railway_stations_routes", "railway_stations"
+  add_foreign_key "railway_stations_routes", "routes"
+  add_foreign_key "tickets", "railway_stations", column: "arrival_station_id"
+  add_foreign_key "tickets", "railway_stations", column: "departure_station_id"
+  add_foreign_key "tickets", "trains"
+  add_foreign_key "tickets", "users"
+  add_foreign_key "trains", "railway_stations", column: "current_station_id"
+  add_foreign_key "trains", "routes"
 end

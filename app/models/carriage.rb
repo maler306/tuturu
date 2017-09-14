@@ -3,9 +3,10 @@ class Carriage < ApplicationRecord
   belongs_to :train
 
   before_validation :set_number
-  validates :number, :type,  presence: true, uniqueness: { scope: :train_id }
+  validates :number, presence: true, uniqueness: { scope: :train_id }
+  validates :type,  presence: true
 
-  scope :carriages_type, ->(type) { where(type: type.to_s) }
+  scope :carriages_type, -> (type) { where(type: type.to_s) }
 
   private
 

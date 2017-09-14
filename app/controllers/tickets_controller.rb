@@ -1,5 +1,4 @@
 class TicketsController < ApplicationController
-  # before_action :authenticate_user!, only: :create
   before_action :set_ticket, only: [:show, :destroy]
 
   def index
@@ -7,11 +6,10 @@ class TicketsController < ApplicationController
   end
 
   def new
-    @ticket = Ticket.new(
-      train_id: params[:train_id],
-      departure_station_id: params[:departure_station_id],
-      arrival_station_id: params[:arrival_station_id]
-    )
+    @train = Train.find( params[:train_id])
+    @departure_station = RailwayStation.find(params[:departure_station_id])
+    @arrival_station = RailwayStation.find(params[:arrival_station_id])
+    @ticket = Ticket.new
   end
 
   def create
@@ -19,7 +17,10 @@ class TicketsController < ApplicationController
     if @ticket.save
       redirect_to @ticket
     else
-      render :new
+      @train = @ticket.train
+      @departure_station = @ticket.departure_station
+      @arrival_station = @ticket.arrival_station
+      render :action => "new", locals: {params: @ticket}
     end
   end
 

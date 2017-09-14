@@ -1,0 +1,7 @@
+<p><%= t('.greeting', user: @user.full_name) %></p>
+<p><%= t('.thank_you') %></p>
+<p><%= t('.order_details', route: @ticket.route_name) %>
+<%= t('.ticket_details') %>
+<%= link_to t('.view'), @ticket %></p>
+<p><%= t('.view_all') %>
+<%= link_to t('.here'), tickets_url %></p>
