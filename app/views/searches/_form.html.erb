@@ -1,6 +1,6 @@
 
 <div class="row">
-  <%= form_tag("/search", method: "get") do %>
+  <%= form_tag("/search", method: "get", class: 'search-form') do %>
     <div class="col-md-4">
       <strong><%= t('.departure_station')  %></strong>
       <%= select_tag :departure_station, options_from_collection_for_select(@railway_stations, "id", "title"), class: 'form-control' %>
