@@ -1,13 +1,13 @@
 $(document).ready(function() {
-  $('a.edit_station').click(function(event) {
-    event.preventDefault();
-    var station_id;
+  $('a.edit_train').click(function(e) {
+    e.preventDefault();
+    var train_id;
     var form;
-    var title;
+    var number;
 
-    station_id = $(this).data('stationId');
-    form = $('#edit_railway_station_' + station_id);
-    title = $('#railway_station_title_' + station_id);
+    train_id = $(this).data('trainId');
+    form = $('#edit_train_' + train_id);
+    number = $('#train_number_' + train_id);
 
     if (!$(this).hasClass('Cancel')) {
       $(this).html('Отменить');
@@ -18,7 +18,6 @@ $(document).ready(function() {
     }
 
     form.toggle();
-    title.toggle();
-
-  });
+    number.toggle();
+  })
 });

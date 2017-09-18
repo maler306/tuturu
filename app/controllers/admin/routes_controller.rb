@@ -29,7 +29,7 @@ class Admin::RoutesController < Admin::BaseController
 
   def update
     if @route.update(route_params)
-      redirect_to [:admin, @route], notice: 'Маршрут был успешно обновлен'
+      redirect_to admin_routes_path, notice: 'Маршрут был успешно обновлен'
     else
       render :edit
     end
