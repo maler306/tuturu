@@ -30,8 +30,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-
 gem 'rails_12factor'
+gem 'jquery-rails'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'

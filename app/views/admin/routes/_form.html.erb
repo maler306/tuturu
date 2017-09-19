@@ -1,17 +1,18 @@
-<%= form_with(model: [:admin, @route], local: true) do |form| %>
-  <%= render 'common/errors', resource: @route %>
+<% hidden = false unless local_assigns[:hidden] %>
+<%= form_for [:admin, route], local: true, html: { style: "display: #{ hidden ? 'none' : 'block'  }"}  do |form| %>
+  <%= render 'common/errors', resource: route %>
 
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, id: :route_title %>
   </div>
 
-    <div class="field">
+    <div>
       <%= form.label :railway_station_ids %>
       <%= form.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {}, { multiple: true } %>
     </div>
 
   <div class="actions">
-    <%= form.submit t('.submit', action: @route.new_record? ? 'Создать' : 'Редактировать') %>
+    <%= form.submit t('.submit', action: route.new_record? ? 'Создать' : 'Редактировать') %>
   </div>
 <% end %>
